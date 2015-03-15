@@ -27,7 +27,7 @@ import com.pi4j.io.i2c.I2CDevice;
  *
  * @author Bruce Beisel
  */
-public class I2CBusSwing implements I2CBus {
+public final class I2CBusSwing implements I2CBus {
 
     @Override
     public I2CDevice getDevice(int addr) throws IOException {

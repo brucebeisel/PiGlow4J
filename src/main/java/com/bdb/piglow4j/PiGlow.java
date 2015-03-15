@@ -29,7 +29,7 @@ import com.pi4j.system.SystemInfo;
  *
  * @author Bruce
  */
-public class PiGlow {
+public final class PiGlow {
     /**
      * The number of LEDs that are on the PiGlow
      */

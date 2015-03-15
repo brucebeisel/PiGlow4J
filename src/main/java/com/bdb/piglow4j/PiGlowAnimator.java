@@ -35,7 +35,7 @@ import java.util.logging.Logger;
  * 
  * @author Bruce Beisel
  */
-public class PiGlowAnimator implements Runnable {
+public final class PiGlowAnimator implements Runnable {
     private final ScheduledExecutorService executor;
     private final List<PiGlowAnimation> animations;
     private final PiGlow piGlow;

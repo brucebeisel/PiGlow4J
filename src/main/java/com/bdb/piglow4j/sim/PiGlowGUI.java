@@ -33,7 +33,7 @@ import javax.swing.JFrame;
  *
  * @author Bruce
  */
-public class PiGlowGUI {
+public final class PiGlowGUI {
     private boolean on = false;
     private boolean topArmOn = false;
     private boolean leftArmOn = false;

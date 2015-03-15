@@ -36,7 +36,7 @@ import javax.swing.JPanel;
  * @author Bruce Beisel
  */
 @SuppressWarnings("serial")
-public class PiGlowJComponent extends JPanel {
+public final class PiGlowJComponent extends JPanel {
     private final LedInfo leds[] = new LedInfo[PiGlow.PIGLOW_LED_COUNT];
     private final Color whites[] = new Color[256];
     private final Color blues[] = new Color[256];

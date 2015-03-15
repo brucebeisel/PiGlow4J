@@ -26,7 +26,7 @@ import com.pi4j.io.i2c.I2CFactoryProvider;
  *
  * @author Bruce Beisel
  */
-public class I2CFactoryProviderSwing implements I2CFactoryProvider {
+public final class I2CFactoryProviderSwing implements I2CFactoryProvider {
 
     @Override
     public I2CBus getBus(int i) throws IOException {

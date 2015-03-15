@@ -25,7 +25,7 @@ import java.util.List;
  * 
  * @author Bruce Beisel
  */
-public class PiGlowBlinker implements PiGlowAnimation {
+public final class PiGlowBlinker implements PiGlowAnimation {
     private final int delay;
     private final int interval;
     private final int lowIntensity;

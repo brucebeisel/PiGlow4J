@@ -17,7 +17,6 @@
 package com.bdb.piglow4j.sim;
 
 import com.bdb.piglow4j.PiGlowLED;
-import com.bdb.piglow4j.sim.PiGlowGUI;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -33,7 +32,7 @@ import com.pi4j.io.i2c.I2CDevice;
  *
  * @author Bruce Beisel
  */
-public class I2CDeviceSwing implements I2CDevice {
+public final class I2CDeviceSwing implements I2CDevice {
     private PiGlowGUI gui;
     private static final Logger logger = Logger.getLogger(I2CDeviceSwing.class.getName());
 

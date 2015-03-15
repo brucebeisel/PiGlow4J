@@ -70,7 +70,7 @@ public final class PiGlowSequence implements PiGlowAnimation {
      * Add a sequence step with a single LED.
      * 
      * @param milliGap The time gap between the previous sequence and this one
-     * @param leds The LEDs that will be changed
+     * @param led The LED that will be changed
      * @param intensity  The intensity that the LEDs will be set to
      */
     public void addSequence(long milliGap, PiGlowLED led, int intensity) {
