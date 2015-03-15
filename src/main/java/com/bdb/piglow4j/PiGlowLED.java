@@ -24,10 +24,14 @@ import java.util.Map;
 
 /**
  * A class the encompasses the characteristics of a PiGlow LED.
+ * This class also contains the 18 instances that represent the LEDs on the PiGlow board.
+ * There are also convenience methods for getting lists of LEDs.
+ * In order to change an LED on the PiGlow, the intensity is set then a call to <code>PiGlow.updateLEDs()</code> is called
+ * to actually change the intensity of the LED on the board.
  * 
  * @author Bruce
  */
-public class PiGlowLED {
+public final class PiGlowLED {
     /**
      * The minimum intensity value for an LED. This value means the LED is off.
      */
@@ -152,6 +156,12 @@ public class PiGlowLED {
         return Collections.unmodifiableList(ledList);
     }
 
+    /**
+     * Set whether the Gamma correction table is used. This defaults to true in normal mode and false when the simulation package
+     * is being used.
+     * 
+     * @param enabled True if gamma correction should be used
+     */
     public static void setGammaCorrectionMode(boolean enabled) {
         performGammaCorrection = enabled;
     }
