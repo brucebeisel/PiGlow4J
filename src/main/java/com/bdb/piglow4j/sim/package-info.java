@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2015 Bruce Beisel
  *
  * This program is free software: you can redistribute it and/or modify
@@ -16,10 +16,6 @@
  */
 
 /**
- * PiGlow4J main package for controlling the PiGlow board for the Raspberry Pi.
- * <br>
- * This is extra information.
- * 
- * @version  1.0-SNAPSHOT
+ * Package that provides a PiGlow simulator using Java Swing.
  */
-package com.bdb.piglow4j;
+package com.bdb.piglow4j.sim;

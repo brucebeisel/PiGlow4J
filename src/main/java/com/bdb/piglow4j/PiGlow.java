@@ -34,8 +34,6 @@ public class PiGlow {
      * The number of LEDs that are on the PiGlow
      */
     public static final int PIGLOW_LED_COUNT = 18;
-    public static final int MIN_INTENSITY = 0;
-    public static final int MAX_INTENSITY = 255;
     private static final int ENABLE_OUTPUT_ADDR = 0x0;
     private static final byte ENABLE_OUTPUT = 0x1;
     private static final int FIRST_LED_ADDR = 0x1;
@@ -85,7 +83,7 @@ public class PiGlow {
                 return SystemInfo.BoardType.UNKNOWN;
         }
         catch (IOException | InterruptedException ex) {
-            logger.log(Level.SEVERE, "Failed to determine Raspberry Pi board type", ex);
+            logger.severe("Failed to determine Raspberry Pi board type");
             return SystemInfo.BoardType.UNKNOWN;
         }
     }
@@ -132,7 +130,7 @@ public class PiGlow {
     /**
      * Commit the changes to the PiGlow.
      * 
-     * @throws IOException 
+     * @throws IOException Error writing to the I2C device
      */
     public void commit() throws IOException {
         device.write(COMMIT_ADDR, VALUE);
@@ -177,60 +175,6 @@ public class PiGlow {
         }
         catch (IOException ex) {
             logger.log(Level.SEVERE, "Exception turning off all LEDs", ex);
-        }
-    }
-
-    public static final void main(String args[]) {
-
-        try {
-            PiGlowLED.setGammaCorrectionMode(true);
-            I2CFactory.setFactory(new I2CFactoryProviderSwing());
-            PiGlow pg = new PiGlow();
-            if (!pg.initialize())
-                System.exit(1);
-
-            PiGlowBlinker leftBlinker = new PiGlowBlinker(333, 1000, 0, 255, 5, true, true, 2, PiGlowLED.armLEDs(PiGlowArm.LEFT));
-            PiGlowBlinker rightBlinker = new PiGlowBlinker(0, 1000, 0, 255, 5, true, true, 2, PiGlowLED.armLEDs(PiGlowArm.RIGHT));
-            PiGlowBlinker topBlinker = new PiGlowBlinker(667, 1000, 0, 255, 5, true, true, 2, PiGlowLED.armLEDs(PiGlowArm.TOP));
-            PiGlowAnimator animator = new PiGlowAnimator(pg);
-            animator.addAnimation(leftBlinker);
-            animator.addAnimation(rightBlinker);
-            animator.addAnimation(topBlinker);
-            animator.start();
-
-	    animator.waitForTermination(300000);
-	    pg.allOff();
-
-            animator = new PiGlowAnimator(pg);
-            PiGlowBlinker blueBlinker = new PiGlowBlinker(0, 500, 0, 255, 1, true, false, 5, PiGlowLED.colorLEDs(PiGlowColor.BLUE));
-            animator.addAnimation(blueBlinker);
-            animator.start();
-
-	    animator.waitForTermination(300000);
-	    pg.allOff();
-
-            animator = new PiGlowAnimator(pg);
-            PiGlowAnimation animation;
-            animation = new PiGlowOneShot(0, 255, PiGlowLED.armLEDs(PiGlowArm.TOP));
-            animator.addAnimation(animation);
-            animation = new PiGlowOneShot(500, 0, PiGlowLED.armLEDs(PiGlowArm.TOP));
-            animator.addAnimation(animation);
-            animation = new PiGlowOneShot(500, 255, PiGlowLED.armLEDs(PiGlowArm.LEFT));
-            animator.addAnimation(animation);
-            animation = new PiGlowOneShot(1000, 0, PiGlowLED.armLEDs(PiGlowArm.LEFT));
-            animator.addAnimation(animation);
-            animation = new PiGlowOneShot(1000, 255, PiGlowLED.armLEDs(PiGlowArm.RIGHT));
-            animator.addAnimation(animation);
-            animation = new PiGlowOneShot(1500, 0, PiGlowLED.armLEDs(PiGlowArm.RIGHT));
-            animator.addAnimation(animation);
-            animator.start();
-	    animator.waitForTermination(300000);
-
-	    PiGlowLED.allLEDs().forEach((led) -> led.setIntensity(255));
-            pg.updateLEDs();
-        }
-        catch (IOException | InterruptedException ex) {
-            Logger.getLogger(PiGlow.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

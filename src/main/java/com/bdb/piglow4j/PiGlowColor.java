@@ -17,7 +17,7 @@
 package com.bdb.piglow4j;
 
 /**
- * Enumeration for the LED colors on the PiGlow.
+ * The colors of the LEDs on the PiGlow.
  * 
  * @author Bruce
  */

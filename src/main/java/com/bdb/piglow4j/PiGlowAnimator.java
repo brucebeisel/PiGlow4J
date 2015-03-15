@@ -26,7 +26,12 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * An class that controls one or more animations.
+ * A class that controls one or more animations. This class uses an <code>Executor</code> to schedule animation updates.
+ * Multiple animators can be active simultaneously, but the effects are unpredictable as the animators are not synchronized.
+ * Though possible, it is not recommended.
+ * 
+ * @see java.util.concurrent.ScheduledExecutorService
+ * @see com.bdb.piglow4j.PiGlowAnimation
  * 
  * @author Bruce Beisel
  */

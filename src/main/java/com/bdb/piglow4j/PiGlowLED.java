@@ -28,8 +28,14 @@ import java.util.Map;
  * @author Bruce
  */
 public class PiGlowLED {
-    public int MIN_INTENSITY = 0;
-    public int MAX_INTENSITY = 255;
+    /**
+     * The minimum intensity value for an LED. This value means the LED is off.
+     */
+    public static final int MIN_INTENSITY = 0;
+    /**
+     * Maximum intensity value for an LED. Be aware that this is very bright.
+     */
+    public static final int MAX_INTENSITY = 255;
     private final PiGlowArm arm;
     private final PiGlowColor color;
     private final int address;

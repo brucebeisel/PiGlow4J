@@ -14,7 +14,12 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.bdb.piglow4j;
+package com.bdb.piglow4j.sim;
+
+import com.bdb.piglow4j.PiGlow;
+import com.bdb.piglow4j.PiGlowArm;
+import com.bdb.piglow4j.PiGlowColor;
+import com.bdb.piglow4j.PiGlowLED;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -145,8 +150,8 @@ public class PiGlowJComponent extends JPanel {
         //
         // Multiply each red, green and blue portion by the 0 - 255 ratio, then create a new color with the results
         //
-        for (int i = 0; i <= PiGlow.MAX_INTENSITY; i++) {
-            float ratio = i / (float)PiGlow.MAX_INTENSITY;
+        for (int i = 0; i <= PiGlowLED.MAX_INTENSITY; i++) {
+            float ratio = i / (float)PiGlowLED.MAX_INTENSITY;
             if (ratio > 1.0F)
                 ratio = 1.0F;
 

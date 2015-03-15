@@ -14,7 +14,10 @@
  * You should have received a copy of the GNU Lesser General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-package com.bdb.piglow4j;
+package com.bdb.piglow4j.sim;
+
+import com.bdb.piglow4j.PiGlowLED;
+import com.bdb.piglow4j.sim.PiGlowGUI;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

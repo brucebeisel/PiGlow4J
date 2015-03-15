@@ -114,10 +114,14 @@ public class PiGlowBlinker implements PiGlowAnimation {
         // Calculate the intensities and time for the next step
         //
         currentStep++;
-        if (currentStep <= steps)
-            frame++;
+        if (reverse) {
+            if (currentStep <= steps)
+                frame++;
+            else
+                frame--;
+        }
         else
-            frame--;
+            frame++;
 
         currentIntensity = initialIntensity + (frame * deltaIntensity);
 	nextStepTime += interval;
@@ -125,8 +129,9 @@ public class PiGlowBlinker implements PiGlowAnimation {
         //
         // Figure out if the animation cycle has finished and needs to be restarted
         //
-        if ((reverse && frame == 0) || (!reverse && frame == steps)) {
+        if ((reverse && frame == 0) || (!reverse && frame > steps)) {
             currentStep = 0;
+            frame = 0;
             count++;
             currentIntensity = initialIntensity;
         }

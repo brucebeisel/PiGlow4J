@@ -17,6 +17,7 @@
 package com.bdb.piglow4j;
 
 /**
+ * Interface for all animations that are controlled by a <code>PiGlowAnimator</code>.
  *
  * @author Bruce Beisel
  */
