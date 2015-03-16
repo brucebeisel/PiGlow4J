@@ -33,8 +33,8 @@ public class PiGlow4JExample1 {
         try {
             PiGlowLED.setGammaCorrectionMode(true);
             I2CFactory.setFactory(new I2CFactoryProviderSwing());
-            PiGlow pg = new PiGlow();
-            if (!pg.initialize())
+            PiGlow pg = PiGlow.getInstance();
+            if (pg == null)
                 System.exit(1);
 
             PiGlowBlinker leftBlinker =  new PiGlowBlinker(100, 300, 0, 255, 5, true, true, 2, PiGlowLED.armLEDs(PiGlowArm.LEFT));

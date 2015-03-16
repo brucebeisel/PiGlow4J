@@ -47,12 +47,33 @@ public final class PiGlow {
     private I2CBus bus;
     private I2CDevice device;
     private final byte[] intensities;
+    private static final PiGlow instance;
+    private static boolean initialized;
     private static final Logger logger = Logger.getLogger(PiGlow.class.getName());
+
+    static {
+        initialized = false;
+        instance = new PiGlow();
+    }
+
+    /**
+     * Singleton factory method to get the PiGlow.
+     * 
+     * @return The PiGlow singleton
+     */
+    public static PiGlow getInstance() {
+        if (!initialized && !instance.initialize())
+            return null;
+        else {
+            initialized = true;
+            return instance;
+        }
+    }
 
     /**
      * Constructor.
      */
-    public PiGlow() {
+    private PiGlow() {
         intensities = new byte[PIGLOW_LED_COUNT];
     }
 
@@ -93,7 +114,7 @@ public final class PiGlow {
      * 
      * @return True of the PiGlow initialized successfully
      */
-    public boolean initialize() {
+    private boolean initialize() {
         Runtime.getRuntime().addShutdownHook(new Thread(()->allOff()));
         SystemInfo.BoardType boardType = getBoardType();
         int busNumber = I2CBus.BUS_1;
@@ -143,10 +164,11 @@ public final class PiGlow {
      * @param intensity the new intensity
      * 
      * @throws IOException Failed to write to the Raspberry Pi I2C
+     * @throws IllegalArgumentException The intensity is out of range
      */
-    public void setLEDIntensity(PiGlowLED led, byte intensity) throws IOException {
+    public void setLEDIntensity(PiGlowLED led, int intensity) throws IOException, IllegalArgumentException {
         led.setIntensity(intensity);
-        device.write(led.getAddress(), intensity);
+        device.write(led.getAddress(), (byte)intensity);
         commit();
     }
 

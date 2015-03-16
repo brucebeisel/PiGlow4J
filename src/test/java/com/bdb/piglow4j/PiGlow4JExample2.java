@@ -29,8 +29,8 @@ public class PiGlow4JExample2 {
         try {
             PiGlowLED.setGammaCorrectionMode(true);
             I2CFactory.setFactory(new I2CFactoryProviderSwing());
-            PiGlow pg = new PiGlow();
-            if (!pg.initialize())
+            PiGlow pg = PiGlow.getInstance();
+            if (pg == null)
                 System.exit(1);
 
             PiGlowAnimator animator = new PiGlowAnimator(pg);

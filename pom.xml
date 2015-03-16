@@ -42,15 +42,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
-                <version>2.2</version>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <addClasspath>true</addClasspath>
-                            <mainClass>com.bdb.piglow4j.PiGlow</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
+                <version>2.6</version>
             </plugin>
         </plugins>
     </build>

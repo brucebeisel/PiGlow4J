@@ -93,49 +93,49 @@ public final class PiGlowJComponent extends JPanel {
         // Create the LEDs for the top LED arm
         //
         LedInfo info = new LedInfo(PiGlowArm.TOP, PiGlowColor.RED, 225, 220, reds);
-        leds[PiGlowLED.findLed(PiGlowArm.TOP, PiGlowColor.RED).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.RED).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.TOP, PiGlowColor.ORANGE, 173, 255, oranges);
-        leds[PiGlowLED.findLed(PiGlowArm.TOP, PiGlowColor.ORANGE).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.ORANGE).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.TOP, PiGlowColor.YELLOW, 138, 305, yellows);
-        leds[PiGlowLED.findLed(PiGlowArm.TOP, PiGlowColor.YELLOW).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.YELLOW).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.TOP, PiGlowColor.GREEN, 135, 360, greens);
-        leds[PiGlowLED.findLed(PiGlowArm.TOP, PiGlowColor.GREEN).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.GREEN).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.TOP, PiGlowColor.BLUE, 155, 415, blues);
-        leds[PiGlowLED.findLed(PiGlowArm.TOP, PiGlowColor.BLUE).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.BLUE).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.TOP, PiGlowColor.WHITE, 205, 432, whites);
-        leds[PiGlowLED.findLed(PiGlowArm.TOP, PiGlowColor.WHITE).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.WHITE).getAddress() - 1] = info;
 
         //
         // Create the LEDs for the left LED arm
         //
         info = new LedInfo(PiGlowArm.LEFT, PiGlowColor.RED, 50, 500, reds);
-        leds[PiGlowLED.findLed(PiGlowArm.LEFT, PiGlowColor.RED).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.RED).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.LEFT, PiGlowColor.ORANGE, 115, 520, oranges);
-        leds[PiGlowLED.findLed(PiGlowArm.LEFT, PiGlowColor.ORANGE).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.ORANGE).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.LEFT, PiGlowColor.YELLOW, 175, 525, yellows);
-        leds[PiGlowLED.findLed(PiGlowArm.LEFT, PiGlowColor.YELLOW).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.YELLOW).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.LEFT, PiGlowColor.GREEN, 230, 505, greens);
-        leds[PiGlowLED.findLed(PiGlowArm.LEFT, PiGlowColor.GREEN).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.GREEN).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.LEFT, PiGlowColor.BLUE, 265, 460, blues);
-        leds[PiGlowLED.findLed(PiGlowArm.LEFT, PiGlowColor.BLUE).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.BLUE).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.LEFT, PiGlowColor.WHITE, 260, 400, whites);
-        leds[PiGlowLED.findLed(PiGlowArm.LEFT, PiGlowColor.WHITE).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.WHITE).getAddress() - 1] = info;
 
         //
         // Create the LEDs for the right LED arm
         //
         info = new LedInfo(PiGlowArm.RIGHT, PiGlowColor.RED, 385, 504, reds);
-        leds[PiGlowLED.findLed(PiGlowArm.RIGHT, PiGlowColor.RED).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.RED).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.RIGHT, PiGlowColor.ORANGE, 380, 445, oranges);
-        leds[PiGlowLED.findLed(PiGlowArm.RIGHT, PiGlowColor.ORANGE).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.ORANGE).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.RIGHT, PiGlowColor.YELLOW, 350, 395, yellows);
-        leds[PiGlowLED.findLed(PiGlowArm.RIGHT, PiGlowColor.YELLOW).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.YELLOW).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.RIGHT, PiGlowColor.GREEN, 310, 355, greens);
-        leds[PiGlowLED.findLed(PiGlowArm.RIGHT, PiGlowColor.GREEN).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.GREEN).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.RIGHT, PiGlowColor.BLUE, 255, 340, blues);
-        leds[PiGlowLED.findLed(PiGlowArm.RIGHT, PiGlowColor.BLUE).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.BLUE).getAddress() - 1] = info;
         info = new LedInfo(PiGlowArm.RIGHT, PiGlowColor.WHITE, 202, 372, whites);
-        leds[PiGlowLED.findLed(PiGlowArm.RIGHT, PiGlowColor.WHITE).getAddress() - 1] = info;
+        leds[PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.WHITE).getAddress() - 1] = info;
 
         //
         // Add the LED JLabels

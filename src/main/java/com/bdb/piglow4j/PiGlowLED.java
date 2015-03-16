@@ -120,7 +120,7 @@ public final class PiGlowLED {
      * 
      * @return The LED object which can never be null
      */
-    public static PiGlowLED findLed(PiGlowArm arm, PiGlowColor color) {
+    public static PiGlowLED findLED(PiGlowArm arm, PiGlowColor color) {
         int id = LedIdentifier(arm, color);
         return leds.get(id);
     }
