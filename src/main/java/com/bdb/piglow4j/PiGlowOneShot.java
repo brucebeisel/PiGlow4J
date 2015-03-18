@@ -45,6 +45,20 @@ public final class PiGlowOneShot implements PiGlowAnimation {
         this.hasRun = false;
     }
 
+    /**
+     * Constructor.
+     * 
+     * @param delay The delay before the animation starts
+     * @param intensity The intensity to which the LEDs will be set
+     * @param led The list of LED to be animated
+     */
+    public PiGlowOneShot(long delay, int intensity, PiGlowLED led) {
+        this.leds = new ArrayList<>();
+        this.leds.add(led);
+        this.delay = delay;
+        this.intensity = intensity;
+        this.hasRun = false;
+    }
     @Override
     public void initialize(long now) {
         fireTime = now + delay;

@@ -27,6 +27,7 @@ import java.util.List;
  */
 public final class PiGlowBlinker implements PiGlowAnimation {
     private final int delay;
+    private final int repetitionDelay;
     private final int interval;
     private final int lowIntensity;
     private final int highIntensity;
@@ -48,7 +49,8 @@ public final class PiGlowBlinker implements PiGlowAnimation {
      * Constructor.
      * 
      * @param delayMillis The initial delay before the animation starts
-     * @param intervalMillis The interval between repetitions
+     * @param repetitionDelayMillis The interval between repetitions
+     * @param intervalMillis The interval between intensity changes
      * @param lowIntensity The starting intensity
      * @param highIntensity The highest intensity
      * @param steps The number of steps required to go from the low to the high intensity. Note that (high - low) % step must equal 0
@@ -57,8 +59,9 @@ public final class PiGlowBlinker implements PiGlowAnimation {
      * @param repetitions The number of times the animation will repeat
      * @param leds The list of LEDs that will be animated
      */
-    public PiGlowBlinker(int delayMillis, int intervalMillis, int lowIntensity, int highIntensity, int steps, boolean lowToHigh, boolean reverse, int repetitions, List<PiGlowLED> leds) {
+    public PiGlowBlinker(int delayMillis, int repetitionDelayMillis, int intervalMillis, int lowIntensity, int highIntensity, int steps, boolean lowToHigh, boolean reverse, int repetitions, List<PiGlowLED> leds) {
         this.delay = delayMillis;
+        this.repetitionDelay = repetitionDelayMillis;
         this.interval = intervalMillis;
         this.lowIntensity = lowIntensity;
         this.highIntensity = highIntensity;
@@ -67,6 +70,34 @@ public final class PiGlowBlinker implements PiGlowAnimation {
         this.reverse = reverse;
         this.repetitions = repetitions;
         this.leds = new ArrayList<>(leds);
+    }
+
+    /**
+     * Constructor.
+     * 
+     * @param delayMillis The initial delay before the animation starts
+     * @param repetitionDelayMillis The interval between repetitions
+     * @param intervalMillis The interval between intensity changes
+     * @param lowIntensity The starting intensity
+     * @param highIntensity The highest intensity
+     * @param steps The number of steps required to go from the low to the high intensity. Note that (high - low) % step must equal 0
+     * @param lowToHigh Whether to animate low to high or high to low
+     * @param reverse Whether the animation will reverse when the high intensity is reached.
+     * @param repetitions The number of times the animation will repeat
+     * @param led The LED that will be animated
+     */
+    public PiGlowBlinker(int delayMillis, int repetitionDelayMillis, int intervalMillis, int lowIntensity, int highIntensity, int steps, boolean lowToHigh, boolean reverse, int repetitions, PiGlowLED led) {
+        this.delay = delayMillis;
+        this.repetitionDelay = repetitionDelayMillis;
+        this.interval = intervalMillis;
+        this.lowIntensity = lowIntensity;
+        this.highIntensity = highIntensity;
+        this.steps = steps;
+        this.lowToHigh = lowToHigh;
+        this.reverse = reverse;
+        this.repetitions = repetitions;
+        this.leds = new ArrayList<>();
+        this.leds.add(led);
     }
 
     @Override
@@ -133,6 +164,7 @@ public final class PiGlowBlinker implements PiGlowAnimation {
             currentStep = 0;
             frame = 0;
             count++;
+            nextStepTime = nextStepTime - interval + repetitionDelay;
             currentIntensity = initialIntensity;
         }
     }
