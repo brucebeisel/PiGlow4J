@@ -25,7 +25,7 @@ import com.pi4j.io.i2c.I2CFactory;
  *
  * @author Bruce Beisel
  */
-public class PiGlowExample3 {
+public class PiGlow4JExample3 {
     public static final void main(String args[]) {
         //
         // Gamma correction is only recommended when using the PiGlow board, not the GUI simulator

@@ -38,34 +38,34 @@ public class PiGlow4JExample4 {
                 System.exit(1);
 
             PiGlowAnimator animator = new PiGlowAnimator(piGlow);
-            PiGlowAnimation blinker = new PiGlowBlinker(0, 1200, 60, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.LEFT));
+            PiGlowAnimation blinker = new PiGlowBlinker(0, 1260, 63, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.LEFT));
             animator.addAnimation(blinker);
-            blinker = new PiGlowBlinker(600, 1200, 60, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.RIGHT));
+            blinker = new PiGlowBlinker(630, 1260, 63, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.RIGHT));
             animator.addAnimation(blinker);
-            blinker =  new PiGlowBlinker(1200, 1200, 60, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.TOP));
+            blinker =  new PiGlowBlinker(1260, 1260, 63, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.TOP));
             animator.addAnimation(blinker);
 
             PiGlowSequence sequence = new PiGlowSequence(1000);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.RED), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.ORANGE), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.YELLOW), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.GREEN), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.BLUE), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.WHITE), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.RED), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.ORANGE), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.YELLOW), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.GREEN), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.BLUE), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.RIGHT, PiGlowColor.WHITE), 5);
 
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.YELLOW), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.ORANGE), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.RED), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.GREEN), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.BLUE), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.WHITE), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.YELLOW), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.ORANGE), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.RED), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.GREEN), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.BLUE), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.TOP, PiGlowColor.WHITE), 5);
 
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.WHITE), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.BLUE), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.GREEN), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.YELLOW), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.ORANGE), 5);
-            sequence.addSequence(100, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.RED), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.WHITE), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.BLUE), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.GREEN), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.YELLOW), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.ORANGE), 5);
+            sequence.addSequence(105, PiGlowLED.findLED(PiGlowArm.LEFT, PiGlowColor.RED), 5);
             animator.addAnimation(sequence);
 
             animator.start();
