@@ -36,7 +36,7 @@ import java.util.logging.Logger;
  * @author Bruce Beisel
  */
 public final class PiGlowAnimator implements Runnable {
-    private final ScheduledExecutorService executor;
+    private ScheduledExecutorService executor;
     private final List<PiGlowAnimation> animations;
     private final PiGlow piGlow;
     private static final Logger logger = Logger.getLogger(PiGlowAnimator.class.getName());
@@ -49,7 +49,6 @@ public final class PiGlowAnimator implements Runnable {
     public PiGlowAnimator(PiGlow piGlow) {
         animations = new ArrayList<>();
         this.piGlow = piGlow;
-        executor = Executors.newSingleThreadScheduledExecutor();
     }
 
     /**
@@ -65,6 +64,7 @@ public final class PiGlowAnimator implements Runnable {
      * Start the animation.
      */
     public void start() {
+        executor = Executors.newSingleThreadScheduledExecutor();
         long now = System.currentTimeMillis();
 	logger.fine("Starting animation at " + now);
         animations.forEach((animation)->animation.initialize(now));
@@ -75,7 +75,8 @@ public final class PiGlowAnimator implements Runnable {
      * Stop the animation, finishing any outstanding LED changes.
      */
     public void stop() {
-        executor.shutdown();
+        if (executor != null)
+            executor.shutdown();
     }
 
     /**
@@ -86,8 +87,10 @@ public final class PiGlowAnimator implements Runnable {
      * @throws InterruptedException If the wait is interrupted
      */
     public void waitForTermination(long millis) throws InterruptedException {
-        if (!executor.awaitTermination(millis, TimeUnit.MILLISECONDS))
+        if (executor != null && !executor.awaitTermination(millis, TimeUnit.MILLISECONDS))
 	    logger.warning("Timed out waiting for executor termination");
+
+        executor = null;
     }
 
     /**
