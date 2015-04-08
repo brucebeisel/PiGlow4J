@@ -38,11 +38,11 @@ public class PiGlow4JExample4 {
                 System.exit(1);
 
             PiGlowAnimator animator = new PiGlowAnimator(piGlow);
-            PiGlowAnimation blinker = new PiGlowBlinker(0, 1260, 63, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.LEFT));
+            PiGlowAnimation blinker = new PiGlowBlinker(0, 1260, 630, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.LEFT));
             animator.addAnimation(blinker);
-            blinker = new PiGlowBlinker(630, 1260, 63, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.RIGHT));
+            blinker = new PiGlowBlinker(630, 1260, 630, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.RIGHT));
             animator.addAnimation(blinker);
-            blinker =  new PiGlowBlinker(1260, 1260, 63, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.TOP));
+            blinker =  new PiGlowBlinker(1260, 1260, 630, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.TOP));
             animator.addAnimation(blinker);
 
             PiGlowSequence sequence = new PiGlowSequence(1000);

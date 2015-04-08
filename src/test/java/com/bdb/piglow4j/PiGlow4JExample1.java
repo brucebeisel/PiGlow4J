@@ -37,9 +37,9 @@ public class PiGlow4JExample1 {
             if (pg == null)
                 System.exit(1);
 
-            PiGlowBlinker leftBlinker =  new PiGlowBlinker(100, 0, 300, 0, 255, 5, true, true, 2, PiGlowLED.armLEDs(PiGlowArm.LEFT));
-            PiGlowBlinker rightBlinker = new PiGlowBlinker(  0, 0, 300, 0, 255, 5, true, true, 2, PiGlowLED.armLEDs(PiGlowArm.RIGHT));
-            PiGlowBlinker topBlinker =   new PiGlowBlinker(200, 0, 300, 0, 255, 5, true, true, 2, PiGlowLED.armLEDs(PiGlowArm.TOP));
+            PiGlowBlinker leftBlinker =  new PiGlowBlinker(100, 0, 1500, 0, 255, 5, true, true, 2, PiGlowLED.armLEDs(PiGlowArm.LEFT));
+            PiGlowBlinker rightBlinker = new PiGlowBlinker(  0, 0, 1500, 0, 255, 5, true, true, 2, PiGlowLED.armLEDs(PiGlowArm.RIGHT));
+            PiGlowBlinker topBlinker =   new PiGlowBlinker(200, 0, 1500, 0, 255, 5, true, true, 2, PiGlowLED.armLEDs(PiGlowArm.TOP));
             PiGlowAnimator animator = new PiGlowAnimator(pg);
             animator.addAnimation(leftBlinker);
             animator.addAnimation(rightBlinker);
@@ -50,10 +50,11 @@ public class PiGlow4JExample1 {
             System.out.println("here");
 
             animator = new PiGlowAnimator(pg);
-            PiGlowBlinker blueBlinker = new PiGlowBlinker(0, 0, 500, 0, 255, 1, true, false, 5, PiGlowLED.colorLEDs(PiGlowColor.BLUE));
+            PiGlowBlinker blueBlinker = new PiGlowBlinker(0, 1000, 0, 255, 5, PiGlowLED.colorLEDs(PiGlowColor.BLUE));
             animator.addAnimation(blueBlinker);
             animator.start();
 	    animator.waitForTermination(300000);
+            Thread.sleep(2000);
 	    pg.allOff();
             System.out.println("here 2");
 
