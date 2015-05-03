@@ -61,6 +61,16 @@ public final class PiGlowAnimator implements Runnable {
     }
 
     /**
+     * Return whether this animator is currently running.
+     */
+    public boolean isRunning() {
+        if (executor == null)
+            return false;
+        else
+            return !executor.isTerminated();
+    }
+
+    /**
      * Start the animation.
      */
     public void start() {
