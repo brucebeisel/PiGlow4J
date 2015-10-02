@@ -45,6 +45,7 @@ public class PiGlow4JExample1 {
             animator.addAnimation(rightBlinker);
             animator.addAnimation(topBlinker);
             animator.start();
+	    leftBlinker.setEnabled(false);
 	    animator.waitForTermination(300000);
 	    pg.allOff();
             System.out.println("here");

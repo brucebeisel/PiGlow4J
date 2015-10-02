@@ -62,6 +62,8 @@ public final class PiGlowAnimator implements Runnable {
 
     /**
      * Return whether this animator is currently running.
+     * 
+     * @return True if the animator is running
      */
     public boolean isRunning() {
         if (executor == null)
@@ -144,7 +146,7 @@ public final class PiGlowAnimator implements Runnable {
             //
             // Tell each animation what the current time is
             //
-	    animations.forEach((animation)->animation.executeNextStep(now));
+	    animations.stream().filter((animation)->animation.isEnabled()).forEach((animation)->animation.executeNextStep(now));
 
             //
             // Change the actual LEDs

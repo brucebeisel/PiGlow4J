@@ -26,7 +26,7 @@ import java.util.List;
  * 
  * @author Bruce Beisel
  */
-public final class PiGlowBlinker implements PiGlowAnimation {
+public final class PiGlowBlinker extends PiGlowAnimation {
     private final int delay;
     private final int repetitionDelay;
     private final int stepInterval;    // The interval between intensity steps

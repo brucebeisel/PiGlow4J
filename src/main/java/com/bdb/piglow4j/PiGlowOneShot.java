@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author Bruce Beisel
  */
-public final class PiGlowOneShot implements PiGlowAnimation {
+public final class PiGlowOneShot extends PiGlowAnimation {
     private final List<PiGlowLED> leds;
     private final long delay;
     private final int intensity;

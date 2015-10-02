@@ -24,7 +24,7 @@ import java.util.List;
  *
  * @author Bruce Beisel
  */
-public final class PiGlowSequence implements PiGlowAnimation {
+public final class PiGlowSequence extends PiGlowAnimation {
     private class Sequence {
         public long startDelay;
         public List<PiGlowLED> leds;
