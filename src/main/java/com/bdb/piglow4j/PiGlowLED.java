@@ -32,6 +32,29 @@ import java.util.Map;
  * @author Bruce
  */
 public final class PiGlowLED {
+    public static class Cache {
+	private final List<Integer> intensities = new ArrayList<>(18);
+
+	Cache() {
+	    for (int i = 0; i < 18; i++)
+		intensities.add(0);
+
+	    refresh();
+	}
+
+	void refresh() {
+	    for (int i = 0; i < intensities.size(); i++)
+		intensities.set(i, ledList.get(i).intensity);
+	}
+
+	void apply() {
+	    for (int i = 0; i < intensities.size(); i++) {
+		ledList.get(i).setIntensity(intensities.get(i));
+	    }
+	}
+	
+    }
+
     /**
      * The minimum intensity value for an LED. This value means the LED is off.
      */
@@ -168,6 +191,11 @@ public final class PiGlowLED {
 
     private static int LedIdentifier(PiGlowArm arm, PiGlowColor color) {
         return arm.ordinal() << 8 | color.ordinal();
+    }
+
+    public static Cache createCache() {
+	Cache cache = new Cache();
+	return cache;
     }
 
     /**

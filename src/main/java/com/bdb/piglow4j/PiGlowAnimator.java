@@ -39,6 +39,7 @@ public final class PiGlowAnimator implements Runnable {
     private ScheduledExecutorService executor;
     private final List<PiGlowAnimation> animations;
     private final PiGlow piGlow;
+    private PiGlowLED.Cache cache;
     private static final Logger logger = Logger.getLogger(PiGlowAnimator.class.getName());
 
     /**
@@ -49,6 +50,7 @@ public final class PiGlowAnimator implements Runnable {
     public PiGlowAnimator(PiGlow piGlow) {
         animations = new ArrayList<>();
         this.piGlow = piGlow;
+	cache = PiGlowLED.createCache();
     }
 
     /**
@@ -146,7 +148,13 @@ public final class PiGlowAnimator implements Runnable {
             //
             // Tell each animation what the current time is
             //
-	    animations.stream().filter((animation)->animation.isEnabled()).forEach((animation)->animation.executeNextStep(now));
+	    for (PiGlowAnimation animation : animations) {
+		cache.refresh();
+		animation.executeNextStep(now);
+
+		if (!animation.isEnabled())
+	           cache.apply();
+	    }
 
             //
             // Change the actual LEDs
