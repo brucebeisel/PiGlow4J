@@ -17,6 +17,7 @@
 package com.bdb.piglow4j;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -43,6 +44,7 @@ public final class PiGlowOneShot extends PiGlowAnimation {
         this.delay = delay;
         this.intensity = intensity;
         this.hasRun = false;
+	this.addManagedLEDs(leds);
     }
 
     /**
@@ -53,12 +55,9 @@ public final class PiGlowOneShot extends PiGlowAnimation {
      * @param led The list of LED to be animated
      */
     public PiGlowOneShot(long delay, int intensity, PiGlowLED led) {
-        this.leds = new ArrayList<>();
-        this.leds.add(led);
-        this.delay = delay;
-        this.intensity = intensity;
-        this.hasRun = false;
+	this(delay, intensity, Arrays.asList(led));
     }
+
     @Override
     public void initialize(long now) {
         fireTime = now + delay;

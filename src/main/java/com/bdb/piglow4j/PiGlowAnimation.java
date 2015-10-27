@@ -16,6 +16,9 @@
  */
 package com.bdb.piglow4j;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Interface for all animations that are controlled by a <code>PiGlowAnimator</code>.
  *
@@ -23,14 +26,49 @@ package com.bdb.piglow4j;
  */
 public abstract class PiGlowAnimation {
     public static final long ANIMATION_COMPLETE = -1;
-    public boolean isEnabled = true;
+    private boolean isEnabled = true;
+    private List<PiGlowLED> managedLEDs = new ArrayList<>(18);
 
+    /**
+     * Returns whether this animation is currently enabled.
+     * 
+     * @return True if enabled
+     */
     public final boolean isEnabled() {
 	return isEnabled;
     }
 
+    /**
+     * Enable or disable an animation.
+     * 
+     * @param enabled True if the animation is to be enabled
+     */
     public final void setEnabled(boolean enabled) {
 	isEnabled = enabled;
+
+	//
+	// If the animation is being disabled then turn off all of the LEDs in this animation.
+	// Note that this is only effective if the derived animation registers its LEDs with
+	// this base class.
+	//
+	if (!enabled)
+	    managedLEDs.forEach((led) -> led.setIntensity(0));
+    }
+
+    /**
+     * Add LEDs to the animation which manages a list to turns off the LEDs when the animation is disabled.
+     * 
+     * @param leds LEDs to add to the list of managed LEDs
+     */
+    protected final void addManagedLEDs(List<PiGlowLED> leds) {
+	if (managedLEDs.isEmpty())
+	    managedLEDs.addAll(leds);
+	else {
+	    for (PiGlowLED led : leds) {
+		if (!managedLEDs.contains(led))
+		    managedLEDs.add(led);
+	    }
+	}
     }
 
     /**
