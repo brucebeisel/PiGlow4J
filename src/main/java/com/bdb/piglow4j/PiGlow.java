@@ -117,7 +117,7 @@ public final class PiGlow {
     private boolean initialize() {
         Runtime.getRuntime().addShutdownHook(new Thread(()->allOff()));
         SystemInfo.BoardType boardType = getBoardType();
-        int busNumber = I2CBus.BUS_1;
+        int busNumber;
         switch (boardType) {
             case ModelA_Rev1:
             case ModelB_Rev1:
@@ -125,6 +125,7 @@ public final class PiGlow {
                 busNumber = I2CBus.BUS_0;
                 break;
 
+            default: // Not needed for an enum
             case ModelA_Plus_Rev1:
             case ModelB_Plus_Rev1:
             case Model2B_Rev1:

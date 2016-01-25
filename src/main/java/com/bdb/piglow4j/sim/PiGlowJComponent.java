@@ -50,7 +50,7 @@ public final class PiGlowJComponent extends JPanel {
     /**
      * Class the hold the information about each simulated LED.
      */
-    private class LedInfo {
+    private static class LedInfo {
         public PiGlowArm arm;
         public PiGlowColor color;
         public int intensity;

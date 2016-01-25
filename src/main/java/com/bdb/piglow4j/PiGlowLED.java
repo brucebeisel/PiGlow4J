@@ -32,9 +32,15 @@ import java.util.Map;
  * @author Bruce
  */
 public final class PiGlowLED {
-    public static class Cache {
+    /**
+     * Holds the intensities of all of the LEDs so the values can be restored later.
+     */
+    public static final class Cache {
 	private final List<Integer> intensities = new ArrayList<>(18);
 
+        /**
+         * Constructor.
+         */
 	Cache() {
 	    for (int i = 0; i < 18; i++)
 		intensities.add(0);
@@ -144,7 +150,7 @@ public final class PiGlowLED {
      * @return The LED object which can never be null
      */
     public static PiGlowLED findLED(PiGlowArm arm, PiGlowColor color) {
-        int id = LedIdentifier(arm, color);
+        int id = ledIdentifier(arm, color);
         return leds.get(id);
     }
 
@@ -189,10 +195,14 @@ public final class PiGlowLED {
         performGammaCorrection = enabled;
     }
 
-    private static int LedIdentifier(PiGlowArm arm, PiGlowColor color) {
+    private static int ledIdentifier(PiGlowArm arm, PiGlowColor color) {
         return arm.ordinal() << 8 | color.ordinal();
     }
 
+    /**
+     * Create a cache that can be used to restore the LED intensities later.
+     * @return 
+     */
     public static Cache createCache() {
 	Cache cache = new Cache();
 	return cache;
@@ -269,6 +279,6 @@ public final class PiGlowLED {
      * @return The encoded identifier
      */
     public int getIdentifier() {
-        return LedIdentifier(arm, color);
+        return ledIdentifier(arm, color);
     }
 }

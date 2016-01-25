@@ -28,6 +28,13 @@ import com.pi4j.io.i2c.I2CFactoryProvider;
  */
 public final class I2CFactoryProviderSwing implements I2CFactoryProvider {
 
+    /**
+     * Return an I2CBus for a given address.
+     * 
+     * @param i The address which is ignored
+     * @return The I2CBus for the simulator
+     * @throws IOException Never thrown, but required
+     */
     @Override
     public I2CBus getBus(int i) throws IOException {
         return new I2CBusSwing();

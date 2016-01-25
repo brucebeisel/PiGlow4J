@@ -25,9 +25,12 @@ import java.util.List;
  * @author Bruce Beisel
  */
 public abstract class PiGlowAnimation {
+    /**
+     * Used as a return from a callback to indicate that the animation should stop
+     */
     public static final long ANIMATION_COMPLETE = -1;
     private boolean isEnabled = true;
-    private List<PiGlowLED> managedLEDs = new ArrayList<>(18);
+    private final List<PiGlowLED> managedLEDs = new ArrayList<>(18);
 
     /**
      * Returns whether this animation is currently enabled.
@@ -64,10 +67,9 @@ public abstract class PiGlowAnimation {
 	if (managedLEDs.isEmpty())
 	    managedLEDs.addAll(leds);
 	else {
-	    for (PiGlowLED led : leds) {
-		if (!managedLEDs.contains(led))
-		    managedLEDs.add(led);
-	    }
+            leds.stream().filter((led) -> (!managedLEDs.contains(led))).forEach((led) -> {
+                managedLEDs.add(led);
+            });
 	}
     }
 
