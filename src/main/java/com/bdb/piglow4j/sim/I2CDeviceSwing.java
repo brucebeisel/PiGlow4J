@@ -66,7 +66,7 @@ public final class I2CDeviceSwing implements I2CDevice {
     }
 
     /**
-     * Now used by the PiGlow simulator.
+     * Not used by the PiGlow simulator.
      * 
      * @param bytes Not used
      * @param offset Not used
@@ -79,12 +79,28 @@ public final class I2CDeviceSwing implements I2CDevice {
         throw new UnsupportedOperationException("Not supported.");
     }
 
+    /**
+     * Write a single byte to the PiGlow board simulator.
+     * 
+     * @param address The address to write
+     * @param b The byte to write
+     * @throws IOException Never thrown by the simulator
+     */
     @Override
     public void write(int address, byte b) throws IOException {
         byte buffer[] = {b};
         gui.processBytes(address, buffer, 1);
     }
 
+    /**
+     * Write an array of bytes to the PiGlow board simulator.
+     * 
+     * @param address The address to write
+     * @param bytes The array of bytes to write
+     * @param offset The offset within the array to start writing
+     * @param size The size of the array
+     * @throws IOException Never thrown by the simulator
+     */
     @Override
     public void write(int address, byte[] bytes, int offset, int size) throws IOException {
         //
@@ -120,16 +136,45 @@ public final class I2CDeviceSwing implements I2CDevice {
         throw new UnsupportedOperationException("Not supported.");
     }
 
+    /**
+     * Not used by the PiGlow simulator.
+     * 
+     * @param i Not used
+     * @return Never returns
+     * @throws IOException  Never thrown
+     */
     @Override
     public int read(int i) throws IOException {
         throw new UnsupportedOperationException("Not supported.");
     }
 
+    /**
+     * Not used by the PiGlow simulator.
+     * 
+     * @param i Not used
+     * @param bytes Not used
+     * @param i1 Not used
+     * @param i2 Not used
+     * @return Never returns
+     * @throws IOException  Never thrown
+     */
     @Override
     public int read(int i, byte[] bytes, int i1, int i2) throws IOException {
         throw new UnsupportedOperationException("Not supported.");
     }
 
+    /**
+     * Not used by the PiGlow simulator.
+     * 
+     * @param i Not used
+     * @param bytes Not used
+     * @param i1 Not used
+     * @param bytes1 Not used
+     * @param i2 Not used
+     * @param i3 Not used
+     * @return Never returns
+     * @throws IOException  Never thrown
+     */
     @Override
     public int read(byte[] bytes, int i, int i1, byte[] bytes1, int i2, int i3) throws IOException {
         throw new UnsupportedOperationException("Not supported.");

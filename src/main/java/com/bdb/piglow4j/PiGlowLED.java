@@ -42,23 +42,28 @@ public final class PiGlowLED {
          * Constructor.
          */
 	Cache() {
-	    for (int i = 0; i < 18; i++)
+	    for (int i = 0; i < PiGlow.PIGLOW_LED_COUNT; i++)
 		intensities.add(0);
 
 	    refresh();
 	}
 
+        /**
+         * Refresh the cache with the current LED intensities
+         */
 	void refresh() {
 	    for (int i = 0; i < intensities.size(); i++)
 		intensities.set(i, ledList.get(i).intensity);
 	}
 
+        /**
+         * Apply the cache intensities to the LEDs
+         */
 	void apply() {
 	    for (int i = 0; i < intensities.size(); i++) {
 		ledList.get(i).setIntensity(intensities.get(i));
 	    }
 	}
-	
     }
 
     /**
