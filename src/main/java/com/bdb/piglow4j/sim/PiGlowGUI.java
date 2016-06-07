@@ -110,6 +110,6 @@ public final class PiGlowGUI {
             component.setIntensities(intensities);
         }
         else
-            logger.warning("Received bytes for unknown address: " + address);
+            logger.log(Level.WARNING, "Received bytes for unknown address: {0}", address);
     }
 }

@@ -29,6 +29,13 @@ import com.pi4j.io.i2c.I2CDevice;
  */
 public final class I2CBusSwing implements I2CBus {
 
+    /**
+     * Get the I2CDevice
+     * 
+     * @param addr The address of the device
+     * @return The device
+     * @throws IOException Is not thrown by this class
+     */
     @Override
     public I2CDevice getDevice(int addr) throws IOException {
         if (addr == 0x54)
@@ -37,19 +44,32 @@ public final class I2CBusSwing implements I2CBus {
             return null;
     }
 
+    /**
+     * Return the file name.
+     * 
+     * @return A fake file name for this simulator.
+     */
     @Override
     public String getFileName() {
         return "No File";
     }
 
+    /**
+     * Get the file descriptor.
+     * 
+     * @return A fake file descriptor
+     */
     @Override
     public int getFileDescriptor() {
         return 0;
     }
 
+    /**
+     * Close the device (Not supported by the simulator)
+     * @throws IOException Not thrown
+     */
     @Override
     public void close() throws IOException {
         throw new UnsupportedOperationException("Not supported.");
     }
-    
 }

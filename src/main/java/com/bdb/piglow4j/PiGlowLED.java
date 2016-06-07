@@ -33,6 +33,40 @@ import java.util.Map;
  */
 public final class PiGlowLED {
     /**
+     * Holds the intensities of all of the LEDs so the values can be restored later.
+     */
+    public static final class Cache {
+	private final List<Integer> intensities = new ArrayList<>(18);
+
+        /**
+         * Constructor.
+         */
+	Cache() {
+	    for (int i = 0; i < PiGlow.PIGLOW_LED_COUNT; i++)
+		intensities.add(0);
+
+	    refresh();
+	}
+
+        /**
+         * Refresh the cache with the current LED intensities
+         */
+	void refresh() {
+	    for (int i = 0; i < intensities.size(); i++)
+		intensities.set(i, ledList.get(i).intensity);
+	}
+
+        /**
+         * Apply the cache intensities to the LEDs
+         */
+	void apply() {
+	    for (int i = 0; i < intensities.size(); i++) {
+		ledList.get(i).setIntensity(intensities.get(i));
+	    }
+	}
+    }
+
+    /**
      * The minimum intensity value for an LED. This value means the LED is off.
      */
     public static final int MIN_INTENSITY = 0;
@@ -121,7 +155,7 @@ public final class PiGlowLED {
      * @return The LED object which can never be null
      */
     public static PiGlowLED findLED(PiGlowArm arm, PiGlowColor color) {
-        int id = LedIdentifier(arm, color);
+        int id = ledIdentifier(arm, color);
         return leds.get(id);
     }
 
@@ -166,8 +200,17 @@ public final class PiGlowLED {
         performGammaCorrection = enabled;
     }
 
-    private static int LedIdentifier(PiGlowArm arm, PiGlowColor color) {
+    private static int ledIdentifier(PiGlowArm arm, PiGlowColor color) {
         return arm.ordinal() << 8 | color.ordinal();
+    }
+
+    /**
+     * Create a cache that can be used to restore the LED intensities later.
+     * @return 
+     */
+    public static Cache createCache() {
+	Cache cache = new Cache();
+	return cache;
     }
 
     /**
@@ -241,6 +284,6 @@ public final class PiGlowLED {
      * @return The encoded identifier
      */
     public int getIdentifier() {
-        return LedIdentifier(arm, color);
+        return ledIdentifier(arm, color);
     }
 }

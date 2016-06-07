@@ -22,10 +22,28 @@ package com.bdb.piglow4j;
  * @author Bruce
  */
 public enum PiGlowColor {
+    /**
+     * The white LED
+     */
     WHITE,
+    /**
+     * The blue LED
+     */
     BLUE,
+    /**
+     * The green LED
+     */
     GREEN,
+    /**
+     * The yellow LED
+     */
     YELLOW,
+    /**
+     * The orange LED
+     */
     ORANGE,
+    /**
+     * The red LED
+     */
     RED
 }

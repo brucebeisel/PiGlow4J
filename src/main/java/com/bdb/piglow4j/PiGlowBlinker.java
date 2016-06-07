@@ -73,6 +73,7 @@ public final class PiGlowBlinker extends PiGlowAnimation {
         this.reverse = reverse;
         this.repetitions = repetitions;
         this.leds = new ArrayList<>(leds);
+	this.addManagedLEDs(leds);
     }
 
     /**

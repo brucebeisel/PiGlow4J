@@ -17,6 +17,7 @@
 package com.bdb.piglow4j;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ import java.util.List;
  * @author Bruce Beisel
  */
 public final class PiGlowSequence extends PiGlowAnimation {
-    private class Sequence {
+    private static final class Sequence {
         public long startDelay;
         public List<PiGlowLED> leds;
         public int intensity;
@@ -64,6 +65,7 @@ public final class PiGlowSequence extends PiGlowAnimation {
     public void addSequence(long milliGap, List<PiGlowLED> leds, int intensity) {
         currentDelay += milliGap;
         sequences.add(new Sequence(currentDelay, leds, intensity));
+	this.addManagedLEDs(leds);
     }
 
     /**
@@ -74,9 +76,7 @@ public final class PiGlowSequence extends PiGlowAnimation {
      * @param intensity  The intensity that the LEDs will be set to
      */
     public void addSequence(long milliGap, PiGlowLED led, int intensity) {
-        List<PiGlowLED> leds = new ArrayList<>();
-        leds.add(led);
-        addSequence(milliGap, leds, intensity);
+        addSequence(milliGap, Arrays.asList(led), intensity);
     }
 
     @Override
