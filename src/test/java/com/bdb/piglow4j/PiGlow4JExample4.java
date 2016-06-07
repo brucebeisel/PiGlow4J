@@ -32,17 +32,18 @@ public class PiGlow4JExample4 {
 
         try {
             PiGlowLED.setGammaCorrectionMode(true);
-            I2CFactory.setFactory(new I2CFactoryProviderSwing());
+            if (args.length > 0)
+		I2CFactory.setFactory(new I2CFactoryProviderSwing());
             PiGlow piGlow = PiGlow.getInstance();
             if (piGlow == null)
                 System.exit(1);
 
             PiGlowAnimator animator = new PiGlowAnimator(piGlow);
-            PiGlowAnimation blinker = new PiGlowBlinker(0, 1260, 630, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.LEFT));
+            PiGlowAnimation blinker = new PiGlowBlinker(0, 1260, 630, 5, 125, 5, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.LEFT));
             animator.addAnimation(blinker);
-            blinker = new PiGlowBlinker(630, 1260, 630, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.RIGHT));
+            blinker = new PiGlowBlinker(630, 1260, 630, 5, 125, 5, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.RIGHT));
             animator.addAnimation(blinker);
-            blinker =  new PiGlowBlinker(1260, 1260, 630, 20, 220, 10, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.TOP));
+            blinker =  new PiGlowBlinker(1260, 1260, 630, 5, 125, 5, true, false, 100, PiGlowLED.armLEDs(PiGlowArm.TOP));
             animator.addAnimation(blinker);
 
             PiGlowSequence sequence = new PiGlowSequence(1000);
